@@ -222,7 +222,7 @@ usarCtrl.confirmar_user = async (req, res) => {
           token: existeUsuario.token,
         });
     
-        res.json("Revise su mail");
+        res.json({ msg: "Revise su mail" });
       } catch (error) {
         console.log(error);
       }
