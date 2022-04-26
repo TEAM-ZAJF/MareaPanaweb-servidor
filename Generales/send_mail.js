@@ -19,8 +19,8 @@ const emailRegistro = async (datos) => {
   const info = await transporter.sendMail({
     from: "MAREA PANA",
     to: email,
-    subject: "COMPROBACION DE CUENTA MARAPANA",
-    text: "Comprueba tu cuenta de mareapana",
+    subject: "RECUPARAR CONTRASEÑA",
+    text: "recuperar contraseña",
     html: `
     <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -307,9 +307,8 @@ table, td { color: #000000; } a { color: #0000ee; text-decoration: underline; } 
       <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:3px 50px 0px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <h1 class="v-font-size" style="margin: 0px; color: #132a6b; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: 'Open Sans',sans-serif; font-size: 43px;">
-    <strong>Bienvenido</strong>
+    <strong>Cambio de contraseña</strong>
   </h1>
-
       </td>
     </tr>
   </tbody>
@@ -321,7 +320,7 @@ table, td { color: #000000; } a { color: #0000ee; text-decoration: underline; } 
       <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px 58px 5px 60px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <div style="color: #333333; line-height: 180%; text-align: center; word-wrap: break-word;">
-    <p style="font-size: 14px; line-height: 180%;"><span style="font-family: Montserrat, sans-serif; font-size: 18px; line-height: 32.4px;">H<span style="line-height: 32.4px; font-size: 18px;"> Hola <strong>${nombre}</strong>, bienvenido al <strong>equipo de MareaPana</strong>.</span></span><br /><span style="font-family: Montserrat, sans-serif; font-size: 18px; line-height: 32.4px;">Tu token de Activaci&oacute;n es <strong>${token}</strong>.</span></p>
+    <p style="font-size: 14px; line-height: 180%;"><span style="font-family: Montserrat, sans-serif; font-size: 18px; line-height: 32.4px;"><span style="line-height: 32.4px; font-size: 18px;"> Hola <strong>${nombre}</strong>, solicitas cambio de contraseña.</span></span><br /><span style="font-family: Montserrat, sans-serif; font-size: 18px; line-height: 32.4px;">Tu token de Activaci&oacute;n es <strong>${token}</strong>.</span></p>
 <p style="font-size: 14px; line-height: 180%;"><span style="font-family: Montserrat, sans-serif; font-size: 18px; line-height: 32.4px;">Activa tu cuenta&nbsp; para disfrutar de la experiencia de MareaPana</span></p>
   </div>
 
