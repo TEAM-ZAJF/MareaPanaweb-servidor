@@ -204,18 +204,13 @@ usarCtrl.confirmar_user = async (req, res) => {
 
 
   usarCtrl.actualizar_password= async (req, res) => {
-    const {codigo,email} =req.body;
+    const {email} =req.body;
    
     const existeUsuario = await Usuario.findOne({ email });
     if (!existeUsuario) {
         const error = new Error("Email no existe");
         return res.status(400).json({ msg: error.message });
     }
-
-    if (existeUsuario.codigo.toString() !== req.body.codigo.toString()) {
-        const error = new Error("Las credenciales no son correctas");
-        return res.status(403).json({msg: error.message});
-      }
     try {
         // guardar usuario
         existeUsuario.token = autenticacion();
