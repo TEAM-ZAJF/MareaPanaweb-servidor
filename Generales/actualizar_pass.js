@@ -1,10 +1,11 @@
 
 const mail=require('nodemailer')
 
-const actualizar_pass = async (datos) => {
+const emailRegistro = async (datos) => {
   const transporter = mail.createTransport({
     host: process.env.SMTP_EMAIL,
     port: process.env.EMAIL_PORT,
+    secure: false,
     auth: {
       user: process.env.EMAIL_ORIGEN,
       pass: process.env.PASSWORD_ORIGEN,
@@ -18,8 +19,8 @@ const actualizar_pass = async (datos) => {
   const info = await transporter.sendMail({
     from: "MAREA PANA",
     to: email,
-    subject: "Restablecer tu password",
-    text: "Restablecer tu password",
+    subject: "RECUPARAR CONTRASEÑA",
+    text: "recuperar contraseña",
     html: `
     <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -306,9 +307,8 @@ table, td { color: #000000; } a { color: #0000ee; text-decoration: underline; } 
       <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:3px 50px 0px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <h1 class="v-font-size" style="margin: 0px; color: #132a6b; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: 'Open Sans',sans-serif; font-size: 43px;">
-    <strong>Bienvenido</strong>
+    <strong>Cambio de contraseña</strong>
   </h1>
-
       </td>
     </tr>
   </tbody>
@@ -320,8 +320,8 @@ table, td { color: #000000; } a { color: #0000ee; text-decoration: underline; } 
       <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px 58px 5px 60px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <div style="color: #333333; line-height: 180%; text-align: center; word-wrap: break-word;">
-    <p style="font-size: 14px; line-height: 180%;"><span style="font-family: Montserrat, sans-serif; font-size: 18px; line-height: 32.4px;">H<span style="line-height: 32.4px; font-size: 18px;"> Hola <strong>${nombre}</strong>, bienvenido al <strong>equipo de MareaPana</strong>.</span></span><br /><span style="font-family: Montserrat, sans-serif; font-size: 18px; line-height: 32.4px;">Tu token de Activaci&oacute;n es <strong>${token}</strong>.</span></p>
-<p style="font-size: 14px; line-height: 180%;"><span style="font-family: Montserrat, sans-serif; font-size: 18px; line-height: 32.4px;">Activa tu cuenta&nbsp; para disfrutar de la experiencia de MareaPana</span></p>
+    <p style="font-size: 14px; line-height: 180%;"><span style="font-family: Montserrat, sans-serif; font-size: 18px; line-height: 32.4px;"><span style="line-height: 32.4px; font-size: 18px;"> Hola <strong>${nombre}</strong>, solicitas cambio de contraseña.</span></span><br /><span style="font-family: Montserrat, sans-serif; font-size: 18px; line-height: 32.4px;">Tu token de Activaci&oacute;n es <strong>${token}</strong>.</span></p>
+
   </div>
 
       </td>
@@ -358,7 +358,7 @@ table, td { color: #000000; } a { color: #0000ee; text-decoration: underline; } 
 <div align="center">
   <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:arial,helvetica,sans-serif;"><tr><td style="font-family:arial,helvetica,sans-serif;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://unlayer.com" style="height:57px; v-text-anchor:middle; width:206px;" arcsize="0%" stroke="f" fillcolor="#132a6b"><w:anchorlock/><center style="color:#FFFFFF;font-family:arial,helvetica,sans-serif;"><![endif]-->
     <a href="https://unlayer.com" target="_blank" class="v-size-width" style="box-sizing: border-box;display: inline-block;font-family:arial,helvetica,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #132a6b; border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px; width:35%; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
-      <span style="display:block;padding:19px;line-height:120%;"><strong><span style="font-size: 16px; line-height: 19.2px; font-family: Montserrat, sans-serif;">Activar Cuenta</span></strong></span>
+      <span style="display:block;padding:19px;line-height:120%;"><strong><span style="font-size: 16px; line-height: 19.2px; font-family: Montserrat, sans-serif;">Cambiar Contraseña</span></strong></span>
     </a>
   <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
 </div>
@@ -628,13 +628,8 @@ table, td { color: #000000; } a { color: #0000ee; text-decoration: underline; } 
 </html>
 
       `,
-
-
-
-
-
   });
-
+  console.log(process.env.URL_FRONT+"/confirmar/"+token)
 };
 
-module.exports=actualizar_pass;
+module.exports=emailRegistro;

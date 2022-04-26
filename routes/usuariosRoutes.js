@@ -16,6 +16,7 @@ get(confirmar_user)
 
 router.route('/actualizar-info/').
 put(actualizar_info)
+// Actualizar Token 
 
 router.route('/email/:codigo').
 put(actualizar_email)
